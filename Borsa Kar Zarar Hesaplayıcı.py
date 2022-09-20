@@ -6,11 +6,11 @@ form.geometry('400x250')
 
 def hesap():
 
-    ana_para = float(_ana_para_entry.get())
-    hedef_yüzde = float(_hedef_yüzde_entry.get())
-    stop_loss_yüzdesi = float(_stop_loss_yüzdesi_entry.get())
-    riske_edilecek_yüzde = float(_riske_edilecek_yüzde_entry.get())
-    kaldıraç_oranı = float(_kaldıraç_oranı_entry.get())
+    ana_para = (float((_ana_para_entry.get()).replace(",",".")))
+    hedef_yüzde = float((_hedef_yüzde_entry.get()).replace(",","."))
+    stop_loss_yüzdesi = float((_stop_loss_yüzdesi_entry.get()).replace(",","."))
+    riske_edilecek_yüzde = float((_riske_edilecek_yüzde_entry.get()).replace(",","."))
+    kaldıraç_oranı = float((_kaldıraç_oranı_entry.get()).replace(",",".")) 
     işlem_miktarı = ( ana_para / (( kaldıraç_oranı * stop_loss_yüzdesi ) / riske_edilecek_yüzde))
 
     _rr.config(text= ( hedef_yüzde / stop_loss_yüzdesi ))
