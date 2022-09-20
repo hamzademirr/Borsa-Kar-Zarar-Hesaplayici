@@ -1,1 +1,0 @@
-# Borsa-Kar-Zarar-Hesaplayici
