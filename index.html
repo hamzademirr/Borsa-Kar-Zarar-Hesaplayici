@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Risk Ödül Hesaplama</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Risk Ödül Hesaplama</h1>
+      <form>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-item">
+              <label for="inputAnaPara" class="form-label">Ana Para</label>
+              <input type="text" class="form-control" id="inputAnaPara" />
+            </div>
+            <div class="form-item">
+              <label for="inputKaldiracOrani" class="form-label"
+                >Kaldýraç Oraný</label
+              >
+              <input type="text" class="form-control" id="inputKaldiracOrani" />
+            </div>
+            <div class="form-item">
+              <label for="inputStopLossYuzdesi" class="form-label"
+                >StopLoss Yüzdesi</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="inputStopLossYuzdesi"
+              />
+            </div>
+            <div class="form-item">
+              <label for="inputRiskeEdilecekYuzde" class="form-label"
+                >Risk Edilecek Yüzde</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="inputRiskeEdilecekYuzde"
+              />
+            </div>
+            <div class="form-item">
+              <label for="inputHedefYuzde" class="form-label"
+                >Hedef Yüzde</label
+              >
+              <input type="text" class="form-control" id="inputHedefYuzde" />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="result-item">
+              <p>
+                Kar Edilecek Miktar:
+                <span class="js-result-kar-edilecek-miktar"></span>
+              </p>
+            </div>
+            <div class="result-item">
+              <p>Stop Kaybý: <span class="js-result-stop-kaybi"></span></p>
+            </div>
+            <div class="result-item">
+              <p>R/R Oraný: <span class="js-result-rr-orani"></span></p>
+            </div>
+            <div class="result-item text-center">
+              <p>
+                Ýþleme Girilecek Miktar:
+                <span class="js-result-isleme-girilecek-miktar"></span>
+              </p>
+            </div>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Hesapla</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const form = document.querySelector("form");
+      const elResultKarEdilecekMiktar = document.querySelector(
+        ".js-result-kar-edilecek-miktar"
+      );
+      const elResultStopKaybi = document.querySelector(".js-result-stop-kaybi");
+      const elResultRROrani = document.querySelector(".js-result-rr-orani");
+      const elResultIslemeGirilecekMiktar = document.querySelector(
+        ".js-result-isleme-girilecek-miktar"
+      );
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const anaPara = e.target[0].value;
+        const kaldiracOrani = e.target[1].value;
+        const stopLossYuzdesi = e.target[2].value;
+        const riskEdilecekYuzde = e.target[3].value;
+        const hedefYuzde = e.target[4].value;
+        const islemMiktari =
+          anaPara / ((kaldiracOrani * stopLossYuzdesi) / riskEdilecekYuzde);
+
+        elResultRROrani.innerHTML = hedefYuzde / stopLossYuzdesi;
+        elResultStopKaybi.innerHTML = (anaPara * riskEdilecekYuzde) / 100;
+        elResultIslemeGirilecekMiktar.innerHTML =
+          anaPara / ((kaldiracOrani * stopLossYuzdesi) / riskEdilecekYuzde);
+        elResultKarEdilecekMiktar.innerHTML =
+          (islemMiktari * hedefYuzde * kaldiracOrani) / 100;
+      });
+    </script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </body>
+</html>
