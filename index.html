@@ -89,11 +89,11 @@
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const anaPara = e.target[0].value;
-        const kaldiracOrani = e.target[1].value;
-        const stopLossYuzdesi = e.target[2].value;
-        const riskEdilecekYuzde = e.target[3].value;
-        const hedefYuzde = e.target[4].value;
+        const anaPara = (e.target[0].value).replace(",", ".");
+        const kaldiracOrani = (e.target[1].value).replace(",", ".");;
+        const stopLossYuzdesi = (e.target[2].value).replace(",", ".");;
+        const riskEdilecekYuzde = (e.target[3].value).replace(",", ".");;
+        const hedefYuzde = (e.target[4].value).replace(",", ".");;
         const islemMiktari =
           anaPara / ((kaldiracOrani * stopLossYuzdesi) / riskEdilecekYuzde);
 
