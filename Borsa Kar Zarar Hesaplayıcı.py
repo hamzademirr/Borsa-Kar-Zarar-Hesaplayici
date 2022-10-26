@@ -13,10 +13,10 @@ def hesap():
     kaldıraç_oranı = float((_kaldıraç_oranı_entry.get()).replace(",",".")) 
     işlem_miktarı = ( ana_para / (( kaldıraç_oranı * stop_loss_yüzdesi ) / riske_edilecek_yüzde))
 
-    _rr.config(text= ( hedef_yüzde / stop_loss_yüzdesi ))
-    _stop_zarar.config(text= ( ( ana_para * riske_edilecek_yüzde ) / 100 ))
-    _işlem_miktarı_s.config(text= ( ana_para / (( kaldıraç_oranı * stop_loss_yüzdesi ) / riske_edilecek_yüzde)))
-    _kar_miktarı.config(text= ( işlem_miktarı * hedef_yüzde * kaldıraç_oranı / 100))
+    _rr.config(text= round( (hedef_yüzde / stop_loss_yüzdesi),2 ))
+    _stop_zarar.config(text= round( (( ana_para * riske_edilecek_yüzde ) / 100), 2 ))
+    _işlem_miktarı_s.config(text= round( (ana_para / (( kaldıraç_oranı * stop_loss_yüzdesi ) / riske_edilecek_yüzde)), 2))
+    _kar_miktarı.config(text= round( (işlem_miktarı * hedef_yüzde * kaldıraç_oranı / 100), 2))
 
 
 etiket = tk.Label(form,text='Risk Kazanç Hesaplama')
