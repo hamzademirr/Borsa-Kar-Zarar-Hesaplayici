@@ -97,12 +97,12 @@
         const islemMiktari =
           anaPara / ((kaldiracOrani * stopLossYuzdesi) / riskEdilecekYuzde);
 
-        elResultRROrani.innerHTML = hedefYuzde / stopLossYuzdesi;
-        elResultStopKaybi.innerHTML = (anaPara * riskEdilecekYuzde) / 100;
+        elResultRROrani.innerHTML = (hedefYuzde / stopLossYuzdesi).toFixed(2);
+        elResultStopKaybi.innerHTML = ((anaPara * riskEdilecekYuzde) / 100).toFixed(2);
         elResultIslemeGirilecekMiktar.innerHTML =
-          anaPara / ((kaldiracOrani * stopLossYuzdesi) / riskEdilecekYuzde);
+          (anaPara / ((kaldiracOrani * stopLossYuzdesi) / riskEdilecekYuzde)).toFixed(2);
         elResultKarEdilecekMiktar.innerHTML =
-          (islemMiktari * hedefYuzde * kaldiracOrani) / 100;
+          ((islemMiktari * hedefYuzde * kaldiracOrani) / 100).toFixed(2);
       });
     </script>
 
